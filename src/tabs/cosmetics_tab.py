@@ -197,13 +197,13 @@ class CosmeticsTab:
         for i, item in enumerate(self.cosmetics[cosmetics_type]):
             if item.replace(";new", "") == search_item:
                 return i
-            
+
         return -1
-    
+
     def color(self, _, value, group_and_item):
         if not self.cosmetics:
             return
-        
+
         group, item = group_and_item
         index = self.get_index(item, group)
 
@@ -211,13 +211,13 @@ class CosmeticsTab:
             r, g, b, a = [int(c * 255) for c in value]
             color = "#%02x%02x%02x" % (r, g, b)
             self.cosmetics["extra"][index]["c"] = color
-            
+
             print(f"Changed color for {item} on {color}")
 
     def colors_all(self, _, value, group):
         if not self.cosmetics:
             return
-        
+
         for item in items:
             self.color(_, value, ("prismatic", item))
             dpg.configure_item(

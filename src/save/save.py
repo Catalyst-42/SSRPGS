@@ -24,12 +24,13 @@ class Save:
 
     def jsonize(self, text):
         text = text.replace('\n\t', '\n')
+        text = text.replace('\n\n', '')
         text = text.replace('\\[', '\\\\［')
         text = text.replace('\\]', '\\\\］')
 
         # Escape array values (colons)
         shift = 0
-        for m in finditer(r"\".*?\"|\[([^{]+?,)*?[^{]*?\]", text):
+        for m in finditer(r"\"(.|\n)*?\"|\[([^{]+?,)*?[^{]*?\]", text):
             if m.group(0)[0] != "[":
                 continue
 
@@ -54,7 +55,7 @@ class Save:
 
         # Add quotes to all values
         shift = 0
-        for match in finditer(r"\".*?\"|[^{}\[\],\n\"]+", text):
+        for match in finditer(r"\"(.|\n)*?\"|[^{}\[\],\n\"]+", text):
             start = match.start() + shift
             end = match.end() + shift
 
@@ -73,7 +74,7 @@ class Save:
                 # Replace boolean values by JSON format
                 if value == "True":
                     value = "true"
-                
+
                 if value == "False":
                     value = "false"
 
@@ -83,7 +84,7 @@ class Save:
                 else:
                     text = f'{text[:start]}"{key}":"{value}"{text[end:]}'
                     shift += 4
-        
+
         text = text.replace('\\\\［', '\\\\[')
         text = text.replace('\\\\］', '\\\\]')
 
@@ -114,8 +115,8 @@ class Save:
 
                 progress_json = progress_json.replace("\\", "\\\\")  # \o/ fix
 
-                # print("SLIM_JSON:", progress_data)
-                # print("JSONIZED_TEXT:", progress_json)
+                print("SLIM_JSON:", progress_data)
+                print("JSONIZED_TEXT:", progress_json)
 
                 self.save_json[field]["progress_data"] = json.loads(progress_json)
 
