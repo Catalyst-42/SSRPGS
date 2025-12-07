@@ -6,7 +6,7 @@ from setuptools import setup
 APP = ["../src/editor.py"]
 
 APP_NAME = "Stone Story RPG Save editor"
-APP_VERSION = "1.2.0"
+APP_VERSION = "1.3.0"
 
 DATA_FILES = [
     "../src/translations",

@@ -28,8 +28,9 @@ with open("settings.toml", "rb") as f:
 
 # Translations
 languages = {
-    "ru": "Русский",
-    "en": "English"
+    "ru": "Russian",
+    "en": "English",
+    "zh": "Chinese",
 }
 
 class TranslationDict:
@@ -79,7 +80,9 @@ i18n = TranslationDict(
 
 # Check things for nt
 if IS_NT:
-    i18n["title"] = "Stone Story RPG save editor"  # DPG don't support latin title on NT
+    # DPG don't support non latin title on NT
+    i18n["title"] = "Stone Story RPG save editor"
+
     WIDTH_OFFSET = 26
     HEIGHT_OFFSET = 38  # Windows magic numbers
 
@@ -96,9 +99,16 @@ def init_font():
         font_file = "fonts/mononoki-Regular.ttf"
         font_size = 32 * SCALE
 
+        # Load font with hieroglyphs for Chinese
+        if get_language() == "zh":
+            font_file = "fonts/SarasaMonoSC-Regular.ttf"
+
         with dpg.font(font_file, font_size) as font:
             dpg.add_font_range_hint(dpg.mvFontRangeHint_Default)
             dpg.add_font_range_hint(dpg.mvFontRangeHint_Cyrillic)
+            dpg.add_font_range_hint(dpg.mvFontRangeHint_Chinese_Full)
+            dpg.add_font_range_hint(dpg.mvFontRangeHint_Chinese_Simplified_Common)
+
             dpg.add_font_chars([ord(c) for c in "♦≈★"])
 
             dpg.set_global_font_scale(0.5)

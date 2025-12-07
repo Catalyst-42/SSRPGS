@@ -56,7 +56,8 @@ items = {
     "wand:Fire": "fire_wand",
     "wand:Ice": "ice_wand",
     "wand:Poison": "poison_wand",
-    "wand:Vigor": "vigor_wand"
+    "wand:Vigor": "vigor_wand",
+    "lollipop_wand": "lollipop_wand",
 }
 
 class CosmeticsTab:
@@ -269,7 +270,7 @@ class CosmeticsTab:
                             no_tooltip=True,
                             no_inputs=True
                         )
-                                        
+
             # Swithers for each item
             for item in items:
                 with dpg.table_row():

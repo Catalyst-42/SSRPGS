@@ -5,7 +5,7 @@
 
     "title": "Stone Story RPG save editor",
     "info_label": "Information",
-    "info": "Save files\n* primary_save.txt - Primary save file.\n* backup.txt - A backup copy of your save created by the game.\n\n* Don't forget to back up your saves.\n* Excessive amounts are worthless.\n* You can export a decrypted save as a JSON file to be able to edit\n  all data fields, not just the ones shown here.\n\nSSRPGS v1.2.0 by Catalyst.",
+    "info": "Save files\n* primary_save.txt - Primary save file.\n* backup.txt - A backup copy of your save created by the game.\n\n* Don't forget to back up your saves.\n* Excessive amounts are worthless.\n* You can export a decrypted save as a JSON file to be able to edit\n  all data fields, not just the ones shown here.\n\nSSRPGS v1.3.0 by Catalyst.",
     "double_resolution": "Удвоить разрешение",
 
     "search": "Search",
@@ -281,7 +281,8 @@
         "fire_wand": "Fire Wand",
         "ice_wand": "Ice Wand",
         "poison_wand": "Poison Wand",
-        "vigor_wand": "Vigor Wand"
+        "vigor_wand": "Vigor Wand",
+        "lollipop_wand": "Lollipop Wand"
     },
 
     "event": "Event",
